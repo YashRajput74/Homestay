@@ -1,0 +1,183 @@
+.secondary{
+    background-color: white;
+}
+.secondPage{
+    color: #512B1A;
+    background-color: white;
+}
+.list_Room.secondPageBorder{
+    border: 1px solid #512B1A;
+}
+.hero.heightAuto{
+    height: auto;
+    background-image: none;
+    background-color: #6D635F;
+    align-items: flex-start;
+}
+.hero.heightAuto form{
+    background-color: #6D635F;
+    padding: 1vw;
+    width: 100%;
+    border-right: 2px solid #5f5653;
+}
+.hero.heightAuto form>button{
+    width: 15vh;
+}
+.hero.heightAuto form>.bigButtons{
+    background-color: #6D635F;
+}
+.hero.heightAuto form>.bigButtons:hover{
+    cursor: pointer;
+}
+body main .cityContainer{
+    width: 100%;
+    height: 80.5vh;
+    padding: 0vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+    background-image: none;
+}
+.cityContainer .mapContainer,.cityContainer .stayContainer{
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    display: block;
+}
+.cityContainer .stayContainer>div{
+    width: 100%;
+    border: none;
+}
+.cityContainer .stayContainer>div:nth-child(1){
+    padding-bottom: 5vh;  
+    border-bottom: 1px solid lightgray;
+}
+.cityContainer .stayContainer .tilesDiv{
+    height: 35vh;
+    margin-top: 4vh;
+}
+.headingDiv{
+    padding: 2vh;
+    padding-top: 0vh;
+}
+.subHeader{
+    width: 100%;
+    height: 5vh;
+    left: 0;
+    margin-bottom: 2vh;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.15);
+    display: none;
+    position: absolute;
+}
+.subHeader>div{
+    width: 50%;
+    display: flex;
+    background-color: white;
+    justify-content: center;
+    align-items: center;
+    color: #5f5653;
+}
+.subHeader>div:nth-child(1){
+    background-color: #5f5653;
+    color: white;
+}
+.headingDiv>h1{
+    font-weight: 350;
+    padding-bottom: 2vh;
+    color: #512B1A;
+}
+.headingDiv>p{
+    color: #512B1A;
+}
+.tilesDiv{
+    display: flex;
+    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.15), 0 -5px 5px 0 rgba(0, 0, 0, 0.15);
+}
+.tilesDiv>div{
+    width: 35%;
+    height: 100%;
+}
+.tilesDiv>div:nth-child(1)>div{
+    width: 80px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    margin-top: 2vh;
+    margin-right: -1vh;
+    float: inline-end;
+    border: 4px solid #ffffff;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.15), 0 1px 5px 0 rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+.tilesDiv>div:nth-child(1)>div>img{
+    width: 100%;
+    vertical-align: middle;
+}
+.tilesDiv .tileContentDiv{
+    width: 65%;
+    padding: 2vh;
+}
+.cityContainer .stayContainer{
+    overflow-y: scroll;
+    border: none;
+}
+.tilesDiv>div{
+    background-position: 0% 50%;
+    background-size: cover;
+}
+.tileContentDiv>h3, .tileContentDiv>h4{
+    font-weight: 400;
+    margin-bottom: 1vh;
+}
+.tileContentDiv>div{
+    display: flex;
+    margin-bottom: 5vh;
+}
+.tileContentDiv>div>img{
+    margin-right: 1vh;
+}
+.tileContentDiv>div>p{
+    color: gray;
+    font-size: 0.9rem;
+}
+.tileContentDiv>p{
+    margin-bottom: 1vh;
+}
+.tileContentDiv>p>span{
+    color: #92C01F;
+    font-size: 1.3rem;
+}
+@media (max-width: 1024px){
+    .hero.heightAuto{
+        display: none;
+    }
+    .subHeader{
+        display: flex;
+    }
+    .headingDiv>h1{
+        padding-top: 7vh;
+    }
+    .cityContainer .mapContainer{
+        display: none;
+    }
+    .cityContainer .stayContainer{
+        width: 100%;
+    }
+    .cityContainer .stayContainer>div:nth-child(1){
+        display: block;
+        border: none;
+        padding-bottom: 1vh;
+    }
+    .stayContainer>.tilesDiv{
+        display: flex;
+        height: auto;
+    }
+    .cityContainer .stayContainer .tilesDiv{
+        height: 25vh;
+    }
+}
+@media (max-width: 500px){
+    .cityContainer .stayContainer .tilesDiv{
+        height: 35vh;
+    }
+}

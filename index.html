@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book Homestays Worldwide - Find Your Home Away From Home</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./stylePg2.css">
 </head>
 <body>
     <header>
@@ -15,10 +16,32 @@
             <ul>
                 <li>DESTINATIONS</li>
                 <li>INSPIRE ME</li>
-                <li>SIGN UP</li>
-                <li>LOG IN</li>
+                <li class="clickedLi">SIGN UP
+                    <ul class="subList">
+                        <li>Guest Signup</li>
+                        <li>Host Signup</li>
+                    </ul>
+                </li>
+                <li class="clickedLi">LOG IN
+                    <ul class="subList">
+                        <li>Guest Login</li>
+                        <li>Host Login</li>
+                    </ul>
+                </li>
                 <li>ENGLISH</li>
-                <li>HELP</li>
+                <li class="clickedLi">HELP
+                    <ul class="subList">
+                        <li>General</li>
+                        <li>Hosts</li>
+                        <li>Guests</li>
+                        <li>Messaging</li>
+                        <li>Reviews</li>
+                        <li>Trust and Safety</li>
+                        <li>Invite a friend</li>
+                        <li>Regulatory Compliance</li>
+                        <li>Contact Us</li>
+                    </ul>
+                </li>
                 <li class="list_Room">LIST A ROOM</li>
             </ul>
         </nav>
@@ -27,6 +50,15 @@
             <div></div>
             <div></div>
         </div>
+        <div class="mobileNav">
+            <a>DESTINATIONS</a>
+            <a>INSPIRE ME</a>
+            <a>SIGN UP</a>
+            <a>LOGIN</a>
+            <a>ENGLISH</a>
+            <a>HELP</a>
+            <a><div>LIST A ROOM</div></a>
+          </div>
     </header>
     <section class="hero">
         <h1>
@@ -34,8 +66,6 @@
         </h1>
         <form>
             <select name="placeToGO" id="placeToGO">
-                <option value="Jaipur">Jaipur</option>
-                <option value="Noida">Noida</option>
             </select>
             <input type="date" placeholder="Check In">
             <input type="date" placeholder="Check Out">
@@ -57,7 +87,8 @@
                 <option value="15">15</option>
                 <option value="16">16</option>
             </select>
-            <button>Search</button>
+            
+            <button class="searchButton">Search</button>
         </form>
     </section>
     <section class="stickySection">
@@ -68,16 +99,8 @@
         <a href="#header"><p class="findHomestayButton">Find a homestay</p></a>
     </section>
     <main>
-        <div id="child1"></div>
-        <div id="child2"></div>
-        <div id="child3"></div>
-        <div id="child4"></div>
-        <div id="child5"></div>
-        <div id="child6"></div>
-    </main>
-    <section class="reCaptcha">
 
-    </section>
+    </main>
     <footer>
         <div>
             <ul>
@@ -116,5 +139,6 @@
     </footer>
     <script src="data.js"></script>
     <script src="script.js"></script>
+    <script src="scriptPg2.js"></script>
 </body>
 </html>
