@@ -17,6 +17,7 @@
 .hero.heightAuto form{
     background-color: #6D635F;
     padding: 1vw;
+    padding-bottom: 1vh;
     width: 100%;
     border-right: 2px solid #5f5653;
 }
@@ -146,6 +147,28 @@ body main .cityContainer{
 .tileContentDiv>p>span{
     color: #92C01F;
     font-size: 1.3rem;
+}
+.sortByList{
+    display: none;
+    color: #512B1A;
+    background-color: #F1EFEF;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);
+    font-size: 1rem;
+    list-style: none;
+    position: absolute;
+    top: 17.3vh;
+    right: 2vw;
+    padding: 3vh;
+}
+.sortByList>li{
+    border: 1px solid lightgray;
+    padding: 1vh;
+    background-color: white;
+}
+.sortByList>li.selected{
+    background-color: #92C01F;
+    border: none;
+    color: white;
 }
 @media (max-width: 1024px){
     .hero.heightAuto{

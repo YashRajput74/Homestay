@@ -143,7 +143,6 @@ function renderMain(){
     document.querySelector(".stickySection").style.display="flex";
     document.querySelector("footer").style.display="block";
 };
-renderMain();
 
 function scrollToSection(section) {
     let offSet = section.offsetTop;
@@ -173,6 +172,9 @@ function removingNavHeroComponents(){
     let newAnchor = document.querySelector(".mobileNav>a:nth-child(2)");
     inspireMeAnchor.textContent = "Inspire Me";
     mobileNav.removeChild(newAnchor);
+
+
+    
     let heroFormSection=document.querySelector(".hero form");
     heroFormSection.querySelectorAll(".bigButtons").forEach(button => button.remove());
 }
@@ -219,11 +221,29 @@ function addEventsListeners(){
                 addHeroComponents();
                 cityPageMain(selectedCity);
             }
+            else if(event.target.classList.contains("sort")){
+                let list = document.querySelector(".sortByList");
+                list.style.display=list.style.display=== "block"?"none":"block";
+            }
         }
     });
+    document.querySelector(".sortByList").addEventListener("click",(event)=>{
+        let sorter=event.target.dataset.value;
+        let selectedCity= document.querySelector("#placeToGO").value;
+        let cityHomes=data.cityHomes[selectedCity];
+        let homesToSort = cityHomes.map(homeId => data.homes[homeId]);
+
+        if (sorter === "reviews") {
+            homesToSort.sort((a, b) => parseInt(b.reviews) - parseInt(a.reviews));
+        } else if (sorter === "distance") {
+            homesToSort.sort((a, b) => parseFloat(a.distance) - parseFloat(b.distance));
+        } else if (sorter === "normal") {
+            homesToSort = homesToSort;
+        }
     
+        tilesRender(homesToSort, selectedCity);
+    })
 }
-addEventsListeners();
 
 document.querySelector('.homestays_logo').addEventListener("click",function(){
     renderMain();

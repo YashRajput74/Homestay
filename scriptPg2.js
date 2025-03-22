@@ -45,41 +45,21 @@ function addHeroComponents(){
     let newButton=document.createElement("button");
     newButton.textContent="Sorting";
     newButton.classList.add("bigButtons");
+    newButton.classList.add("sort");
     heroFormSection.insertBefore(newButton,searchButton.nextSibling);
     let newButton2=document.createElement("button");
     newButton2.textContent="futureSlider";
     newButton2.classList.add("bigButtons");
+    newButton2.classList.add("slider");
     heroFormSection.insertBefore(newButton2,searchButton.nextSibling);
     let newButton3=document.createElement("button");
     newButton3.textContent="Filter";
     newButton3.classList.add("bigButtons");
+    newButton3.classList.add("filter");
     heroFormSection.insertBefore(newButton3,searchButton.nextSibling);
 }
-/* function addFilterSortingUI(){
-    let tpl=`
-    <ul class=""sortBylist>
-        <li>Our Picks</li>
-        <li>Most Reviewed</li>
-        <li>Distance</li>
-    </ul>
-    `
-    document.querySelector("body").innerHTML+=tpl;
-}
-addFilterSortingUI(); */
-function stayContainerRender(param){
-    let value=param;
-    let arrayOfHomes=data.cityHomes[value];
-    let numberOfHomes=data.cityHomes[value].length;
-    let tpl=`
-    <div class="headingDiv">
-        <div class="subHeader">
-            <div>List</div>
-            <div>Map</div>
-        </div>
-        <h1>Rooms to Rent and Homestays in ${data.cities[value].name}, India</h1>
-        <p>We have found ${numberOfHomes} homestays in ${data.cities[value].name}, India for your stay. Renting a room with Homestay in ${data.cities[value].name}, India offers host family accommodation, ideal for all types of travel including tourists, students, gap year, interns or city break weekenders.</p>
-    </div>
-    ${arrayOfHomes.map((item)=>{
+function tilesRender(arrayOfHomes,value){
+    return arrayOfHomes.map((item)=>{
         return `
         <div class="tilesDiv">
             <div style="background-image: url(https://secure.homestaymanager.com/picture?ss=BAh7CEkiCGdpZAY6BkVUSSI${data.homes[item].backgroundimgUrl})">
@@ -93,7 +73,24 @@ function stayContainerRender(param){
                 <p>From <span>₹${data.homes[item].price}</span> per night</p>
             </div>
         </div>`
-    }).join('')}`;
+    }).join('');
+    
+}
+
+function stayContainerRender(param){
+    let value=param;
+    let arrayOfHomes=data.cityHomes[value];
+    let numberOfHomes=data.cityHomes[value].length;
+    let tpl=`
+    <div class="headingDiv">
+        <div class="subHeader">
+            <div>List</div>
+            <div>Map</div>
+        </div>
+        <h1>Rooms to Rent and Homestays in ${data.cities[value].name}, India</h1>
+        <p>We have found ${numberOfHomes} homestays in ${data.cities[value].name}, India for your stay. Renting a room with Homestay in ${data.cities[value].name}, India offers host family accommodation, ideal for all types of travel including tourists, students, gap year, interns or city break weekenders.</p>
+    </div>
+    ${tilesRender(arrayOfHomes,value)}`;
     document.querySelector(".stayContainer").innerHTML=tpl;
 }
 function cityPageMain(param){
@@ -110,3 +107,19 @@ function cityPageMain(param){
     document.querySelector("main").innerHTML=tpl;
     stayContainerRender(param);
 }
+function addFilterSortingUI(){
+    let tpl=`
+    <ul class="sortByList">
+        <li class="selected" data-value="normal">Our Picks</li>
+        <li data-value="reviews">Most Reviewed</li>
+        <li data-value="distance">Distance</li>
+    </ul>
+    `
+    document.querySelector(".hero").innerHTML+=tpl;
+}
+function init(){
+    renderMain();
+    addFilterSortingUI();
+    addEventsListeners();
+}
+init();
