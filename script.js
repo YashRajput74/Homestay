@@ -229,18 +229,21 @@ function addEventsListeners(){
     });
     document.querySelector(".sortByList").addEventListener("click",(event)=>{
         let sorter=event.target.dataset.value;
+        document.querySelectorAll(".sortByList>li").forEach((item)=>item.classList.remove("selected"));
+        event.target.classList.add("selected");
         let selectedCity= document.querySelector("#placeToGO").value;
         let cityHomes=data.cityHomes[selectedCity];
         let homesToSort = cityHomes.map(homeId => data.homes[homeId]);
 
         if (sorter === "reviews") {
             homesToSort.sort((a, b) => parseInt(b.reviews) - parseInt(a.reviews));
-        } else if (sorter === "distance") {
+        } 
+        else if (sorter === "distance") {
             homesToSort.sort((a, b) => parseFloat(a.distance) - parseFloat(b.distance));
-        } else if (sorter === "normal") {
+        } 
+        else if (sorter === "normal") {
             homesToSort = homesToSort;
         }
-    
         tilesRender(homesToSort, selectedCity);
     })
 }

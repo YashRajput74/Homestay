@@ -59,27 +59,28 @@ function addHeroComponents(){
     heroFormSection.insertBefore(newButton3,searchButton.nextSibling);
 }
 function tilesRender(arrayOfHomes,value){
-    return arrayOfHomes.map((item)=>{
+    var tpl= arrayOfHomes.map((item)=>{
         return `
         <div class="tilesDiv">
-            <div style="background-image: url(https://secure.homestaymanager.com/picture?ss=BAh7CEkiCGdpZAY6BkVUSSI${data.homes[item].backgroundimgUrl})">
-                <div><img src="https://secure.homestaymanager.com/picture?ss=BAh7CEkiCGdpZAY6BkVUSSI${data.homes[item].imgurl}"></div>
+            <div style="background-image: url(https://secure.homestaymanager.com/picture?ss=BAh7CEkiCGdpZAY6BkVUSSI${item.backgroundimgUrl})">
+                <div><img src="https://secure.homestaymanager.com/picture?ss=BAh7CEkiCGdpZAY6BkVUSSI${item.imgurl}"></div>
             </div>
             <div id="tile" class="tileContentDiv">
-                <h3>${data.homes[item].name}</h3>
-                <h4>${data.homes[item].address}</h4>
-                <div><img src="https://www.homestay.com/assets/small-review-score-img-0b2a7a69f06c0d32cd00047fc4dd9f2535d9d80cc4832b725f7d4cb0580e33d7.svg"><p>${data.homes[item].reviews} Reviews</p></div>
-                <p>Distance from centre of ${data.cities[value].name}: ${data.homes[item].distance}</p>
-                <p>From <span>₹${data.homes[item].price}</span> per night</p>
+                <h3>${item.name}</h3>
+                <h4>${item.address}</h4>
+                <div><img src="https://www.homestay.com/assets/small-review-score-img-0b2a7a69f06c0d32cd00047fc4dd9f2535d9d80cc4832b725f7d4cb0580e33d7.svg"><p>${item.reviews} Reviews</p></div>
+                <p>Distance from centre of ${data.cities[value].name}: ${item.distance}</p>
+                <p>From <span>₹${item.price}</span> per night</p>
             </div>
         </div>`
     }).join('');
-    
+    document.querySelector(".headingDiv~div").innerHTML=tpl;
 }
 
 function stayContainerRender(param){
     let value=param;
     let arrayOfHomes=data.cityHomes[value];
+    let homestoDisplay = arrayOfHomes.map(homeId => data.homes[homeId]);
     let numberOfHomes=data.cityHomes[value].length;
     let tpl=`
     <div class="headingDiv">
@@ -90,8 +91,11 @@ function stayContainerRender(param){
         <h1>Rooms to Rent and Homestays in ${data.cities[value].name}, India</h1>
         <p>We have found ${numberOfHomes} homestays in ${data.cities[value].name}, India for your stay. Renting a room with Homestay in ${data.cities[value].name}, India offers host family accommodation, ideal for all types of travel including tourists, students, gap year, interns or city break weekenders.</p>
     </div>
-    ${tilesRender(arrayOfHomes,value)}`;
+    <div>
+    </div>
+    `;
     document.querySelector(".stayContainer").innerHTML=tpl;
+    tilesRender(homestoDisplay,value)
 }
 function cityPageMain(param){
     let tpl=`
