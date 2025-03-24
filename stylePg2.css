@@ -156,7 +156,7 @@ body main .cityContainer{
     font-size: 1rem;
     list-style: none;
     position: absolute;
-    top: 17.3vh;
+    top: 17.2vh;
     right: 2vw;
     padding: 3vh;
 }
@@ -169,6 +169,62 @@ body main .cityContainer{
     background-color: #92C01F;
     border: none;
     color: white;
+}
+.filterByList{
+    width: auto;
+    height: auto;
+    color: #5f5653;
+    font-size: 1rem;
+    font-weight: 500;
+    background-color: #F1EFEF;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15), 0 -5px 5px rgba(0, 0, 0, 0.15);
+    padding: 1vh 2vh;
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+    display: none;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 90% 10%;
+    position: absolute;
+    top: 17.1vh;
+    right: 21vw;
+    column-gap: 2vw;
+}
+.filterByList>div>p{
+    padding: 1vh;
+    padding-bottom: 0vh;
+}
+.filterByList>div>ul{
+    padding: 1vh;
+    list-style: none;
+    font-size: 0.9rem;
+    border-top-left-radius: 3px;
+}
+.filterByList>div>ul>li{
+    border: 1px solid lightgray;
+    background-color: #ffffff;
+    padding: 1vh;
+}
+.filterByList>div>ul>li:hover{
+    background-color: #F1EFEF;
+    cursor: pointer;
+}
+.filterByList>div>ul>li.selected{
+    background-color: #92C01F;
+    color: white;
+}
+.filterByList>div:last-child{
+    grid-area: 2/1/3/5;
+    display: flex;
+    justify-content: center;
+    padding: 1vh;
+    column-gap: 2vh;
+    font-weight: 400;
+}
+.filterByList>div>span:last-child{
+    color: #2B95CA;
+}
+.filterByList>div>span:last-child:hover{
+    cursor: pointer;
 }
 @media (max-width: 1024px){
     .hero.heightAuto{

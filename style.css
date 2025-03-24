@@ -134,6 +134,12 @@ nav>ul>li:hover{
     color: white;
     font-size: 1.1rem;
 }
+.hero form>button:hover{
+    cursor: pointer;
+}
+.hero form>.bigButton:hover{
+    background-color: #574F4C;
+}
 .stickySection{
     width: 100%;
     height: 7vh;

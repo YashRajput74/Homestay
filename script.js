@@ -173,34 +173,13 @@ function removingNavHeroComponents(){
     inspireMeAnchor.textContent = "Inspire Me";
     mobileNav.removeChild(newAnchor);
 
-
-    
     let heroFormSection=document.querySelector(".hero form");
     heroFormSection.querySelectorAll(".bigButtons").forEach(button => button.remove());
 }
 
 /* This function is adding event listeners and event to nav bar's li*/
 function addEventsListeners(){
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll('nav li').forEach(function (item) {
-            item.addEventListener("click", function (event) {
-                event.stopPropagation();
-                let subList = item.querySelector('.subList');
-                if (!subList) return;
-                document.querySelectorAll('.subList').forEach(function (list) {
-                    if (list !== subList) {
-                        list.style.display = "none";
-                    }
-                });
-                subList.style.display = subList.style.display === "block" ? "none" : "block";
-            });
-        });
-        document.addEventListener("click", function () {
-            document.querySelectorAll('.subList').forEach(function (list) {
-                list.style.display = "none";
-            });
-        });
-    });
+    document.addEventListener("DOMContentLoaded", visibiltyOfLists);
     
     document.querySelectorAll('.stickySection a').forEach(function(anchor) {
         anchor.addEventListener('click', function (e) {
@@ -211,41 +190,11 @@ function addEventsListeners(){
         });
     });
 
-    document.querySelector("form").addEventListener("click", (event) => {
-        if (event.target.tagName.toLowerCase() === "button") {
-            event.preventDefault();
-            if (event.target.classList.contains("searchButton")) {
-                let selectedOption = document.querySelector("#placeToGO");
-                selectedCity = selectedOption.value;
-                addingNavComponents();
-                addHeroComponents();
-                cityPageMain(selectedCity);
-            }
-            else if(event.target.classList.contains("sort")){
-                let list = document.querySelector(".sortByList");
-                list.style.display=list.style.display=== "block"?"none":"block";
-            }
-        }
-    });
-    document.querySelector(".sortByList").addEventListener("click",(event)=>{
-        let sorter=event.target.dataset.value;
-        document.querySelectorAll(".sortByList>li").forEach((item)=>item.classList.remove("selected"));
-        event.target.classList.add("selected");
-        let selectedCity= document.querySelector("#placeToGO").value;
-        let cityHomes=data.cityHomes[selectedCity];
-        let homesToSort = cityHomes.map(homeId => data.homes[homeId]);
+    document.querySelector("form").addEventListener("click",formRenderVisibility);
+    
+    document.querySelector(".sortByList").addEventListener("click",sortFunction)
 
-        if (sorter === "reviews") {
-            homesToSort.sort((a, b) => parseInt(b.reviews) - parseInt(a.reviews));
-        } 
-        else if (sorter === "distance") {
-            homesToSort.sort((a, b) => parseFloat(a.distance) - parseFloat(b.distance));
-        } 
-        else if (sorter === "normal") {
-            homesToSort = homesToSort;
-        }
-        tilesRender(homesToSort, selectedCity);
-    })
+    document.querySelector(".filterByList").addEventListener("click",filterFunction)
 }
 
 document.querySelector('.homestays_logo').addEventListener("click",function(){
