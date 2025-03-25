@@ -84,6 +84,9 @@ const placesData=[
         price: '1871'
     }
 ]
+const extraFields=[
+    "mealsProvided","useKitchen","males","females","couples","families","students","pets","cooking","golf","tennis","hiking","cycling","wheelchair","wirelessIntenet","TV","garden","bikes","parking","pool","gym"
+]
 const data={
     cities:{
         "1": {name: "Jaipur, Rajasthan"},
@@ -227,7 +230,7 @@ const data={
             "distance": "5.4km",
             "price": "1000",
         },
-        "16":{
+        "16" :{
                 "backgroundimgUrl": "xZ2lkOi8vaHN0L1Byb3BlcnR5UGljdHVyZS8xNTUwNzE5P2V4cGlyZXNfaW4GOwBUSSIMcHVycG9zZQY7AFRJIgxkZWZhdWx0BjsAVEkiD2V4cGlyZXNfYXQGOwBUMA%3D%3D--e3cfcfd3476dbc06224555baf6697aa4d67ab916&style=listing",
                 "imgurl": "nZ2lkOi8vaHN0L0F2YXRhci80MDY1ODE_ZXhwaXJlc19pbgY7AFRJIgxwdXJwb3NlBjsAVEkiDGRlZmF1bHQGOwBUSSIPZXhwaXJlc19hdAY7AFQw--62d73b96c089b694eefbc4f1cc8d91077537c2a5&style=small",
                 "name": "Cozy Stay in the heart of Gurgaon",
@@ -235,7 +238,7 @@ const data={
                 "reviews": "1",
                 "distance": "22.4 km",
                 "price": "1,666",
-            },
+        },
         "17":{
             "backgroundimgUrl": "xZ2lkOi8vaHN0L1Byb3BlcnR5UGljdHVyZS8xMDYzODc2P2V4cGlyZXNfaW4GOwBUSSIMcHVycG9zZQY7AFRJIgxkZWZhdWx0BjsAVEkiD2V4cGlyZXNfYXQGOwBUMA%3D%3D--f549af437ba8fae0ee579559df295b173030f1af&style=listing",
             "imgurl": "nZ2lkOi8vaHN0L0F2YXRhci8yNTAzODI_ZXhwaXJlc19pbgY7AFRJIgxwdXJwb3NlBjsAVEkiDGRlZmF1bHQGOwBUSSIPZXhwaXJlc19hdAY7AFQw--f611bd39963356bac4190aab2c0508aa8e753723&style=small",
@@ -369,3 +372,12 @@ const data={
         "3":[]
     }
 }
+function addDataFields(){
+    for (let homeID in data.homes) {
+        let home = data.homes[homeID];
+        extraFields.forEach(field=>{
+            home[field]= Math.round(Math.random()+0.2);
+        })
+    }
+}
+addDataFields();

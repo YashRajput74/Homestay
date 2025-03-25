@@ -53,12 +53,15 @@ function addHeroComponents(){
     newButton2.classList.add("slider");
     heroFormSection.insertBefore(newButton2,searchButton.nextSibling);
     let newButton3=document.createElement("button");
-    newButton3.textContent="FILTERS (0)";
+    newButton3.textContent="FILTERS";
     newButton3.classList.add("bigButtons");
     newButton3.classList.add("filter");
     heroFormSection.insertBefore(newButton3,searchButton.nextSibling);
 }
-function tilesRender(arrayOfHomes,value){
+function tilesRender(){
+    let value=document.querySelector("#placeToGO").value;
+    let sortedData=sortFunction();
+    let arrayOfHomes=sortedData;//in this function i will so filteriing
     var tpl= arrayOfHomes.map((item)=>{
         return `
         <div class="tilesDiv">
@@ -76,11 +79,8 @@ function tilesRender(arrayOfHomes,value){
     }).join('');
     document.querySelector(".headingDiv~div").innerHTML=tpl;
 }
-
-function stayContainerRender(param){
-    let value=param;
-    let arrayOfHomes=data.cityHomes[value];
-    let homestoDisplay = arrayOfHomes.map(homeId => data.homes[homeId]);
+function stayContainerRender(){
+    let value=document.querySelector("#placeToGO").value;
     let numberOfHomes=data.cityHomes[value].length;
     let tpl=`
     <div class="headingDiv">
@@ -95,9 +95,9 @@ function stayContainerRender(param){
     </div>
     `;
     document.querySelector(".stayContainer").innerHTML=tpl;
-    tilesRender(homestoDisplay,value)
+    tilesRender();
 }
-function cityPageMain(param){
+function cityPageMain(){
     let tpl=`
         <div class="cityContainer">
             <div class="mapContainer">
@@ -109,7 +109,14 @@ function cityPageMain(param){
         </div>
     `;
     document.querySelector("main").innerHTML=tpl;
-    stayContainerRender(param);
+    stayContainerRender();
+}
+function clearAllFilters(){
+    let selectedLi=document.querySelectorAll(".filterByList ul li.selected");
+    selectedLi.forEach((item)=>{
+        item.classList.remove("selected");
+    })
+    updateNumber();
 }
 function addFilterSortingUI(){
     let tpl=`
@@ -172,7 +179,7 @@ function addFilterSortingUI(){
                 <div>
                     <span>15 Homestays</span>
                     <span>-</span>
-                    <span>Clear filters</span>
+                    <span class="clearAllFilters">Clear filters</span>
                 </div>
             </div>`
     document.querySelector(".hero").innerHTML+=tpl;
@@ -213,14 +220,18 @@ function visibiltyOfLists(){
         }
     });
 }
-function sortFunction(event){
-    let sorter=event.target.dataset.value;
+function sorterButtons(event){
     document.querySelectorAll(".sortByList>li").forEach((item)=>item.classList.remove("selected"));
     event.target.classList.add("selected");
+    tilesRender();
+}
+function sortFunction(){
     let selectedCity= document.querySelector("#placeToGO").value;
     let cityHomes=data.cityHomes[selectedCity];
     let homesToSort = cityHomes.map(homeId => data.homes[homeId]);
-
+    let sortingList=document.querySelector(".sortByList");
+    let selectedLi=sortingList.querySelector("li.selected");
+    let sorter=selectedLi.dataset.value;
     if (sorter === "reviews") {
         homesToSort.sort((a, b) => parseInt(b.reviews) - parseInt(a.reviews));
     } 
@@ -230,17 +241,15 @@ function sortFunction(event){
     else if (sorter === "normal") {
         homesToSort = homesToSort;
     }
-    tilesRender(homesToSort, selectedCity);
+    return homesToSort;
 }
 function formRenderVisibility(event){
     if (event.target.tagName.toLowerCase() === "button") {
         event.preventDefault();
         if (event.target.classList.contains("searchButton")) {
-            let selectedOption = document.querySelector("#placeToGO");
-            selectedCity = selectedOption.value;
             addingNavComponents();
             addHeroComponents();
-            cityPageMain(selectedCity);
+            cityPageMain();
         }
         else if(event.target.classList.contains("sort")){
             let list = document.querySelector(".sortByList");
@@ -264,7 +273,20 @@ function formRenderVisibility(event){
         }
     }
 }
-function filterFunction(event){
+function updateNumber(){
+    const categories=document.querySelectorAll(".filterByList p");
+    categories.forEach(pTag=>{
+        let ulTag=pTag.nextElementSibling;
+        if(ulTag && ulTag.tagName=="UL"){
+            let selectedLi=ulTag.querySelectorAll("li.selected");
+            let pTagText=pTag.textContent.split(" ");
+            pTagText[pTagText.length-1]=`(${selectedLi.length})`;
+            pTag.textContent=pTagText.join(" ");
+        }
+    })
+    tilesRender();
+}
+function filterButtons(event){
     let li=event.target;
     if(li.classList.contains("selected")){
         li.classList.remove("selected");
@@ -272,6 +294,7 @@ function filterFunction(event){
     else{
         li.classList.add("selected");
     }
+    updateNumber();
 }
 function init(){
     renderMain();

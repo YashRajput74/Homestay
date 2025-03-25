@@ -247,6 +247,9 @@ body main .cityContainer{
         border: none;
         padding-bottom: 1vh;
     }
+    .stayContainer .headingDiv~div{
+        display: block;
+    }
     .stayContainer>.tilesDiv{
         display: flex;
         height: auto;

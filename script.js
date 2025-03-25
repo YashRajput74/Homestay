@@ -136,6 +136,14 @@ function renderMain(){
     benefitDiv(benefitData);
     inspirationDiv(inspirationData);
     featuredPlaces(placesData);
+    let sortList=document.querySelector(".hero .sortByList")
+    if(sortList){
+        sortList.style.display="none";
+    }
+    let filterList=document.querySelector(".hero .filterByList")
+    if(filterList){
+        filterList.style.display="none";
+    }
     document.querySelector("header").classList.remove("secondary");
     document.querySelector("nav").classList.remove("secondPage");
     document.querySelector(".list_Room").classList.remove("secondPageBorder");
@@ -143,7 +151,6 @@ function renderMain(){
     document.querySelector(".stickySection").style.display="flex";
     document.querySelector("footer").style.display="block";
 };
-
 function scrollToSection(section) {
     let offSet = section.offsetTop;
     window.scrollTo({
@@ -151,7 +158,6 @@ function scrollToSection(section) {
         behavior: "smooth"
     });
 }
-
 function toggleMobileNav() {
     let mobileNav = document.querySelector('.mobileNav');
     if (mobileNav.classList.contains('open')) {
@@ -160,7 +166,6 @@ function toggleMobileNav() {
         mobileNav.classList.add('open');
     }
 }
-
 function removingNavHeroComponents(){
     let navList=document.querySelector("nav ul");
     let inspireMeLi=navList.querySelector("li:nth-child(2)");
@@ -176,11 +181,9 @@ function removingNavHeroComponents(){
     let heroFormSection=document.querySelector(".hero form");
     heroFormSection.querySelectorAll(".bigButtons").forEach(button => button.remove());
 }
-
 /* This function is adding event listeners and event to nav bar's li*/
 function addEventsListeners(){
     document.addEventListener("DOMContentLoaded", visibiltyOfLists);
-    
     document.querySelectorAll('.stickySection a').forEach(function(anchor) {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -189,20 +192,16 @@ function addEventsListeners(){
             scrollToSection(targetElement);
         });
     });
-
     document.querySelector("form").addEventListener("click",formRenderVisibility);
-    
-    document.querySelector(".sortByList").addEventListener("click",sortFunction)
-
-    document.querySelector(".filterByList").addEventListener("click",filterFunction)
+    document.querySelector(".sortByList").addEventListener("click",sorterButtons);
+    document.querySelector(".filterByList").addEventListener("click",filterButtons);
+    document.querySelector(".clearAllFilters").addEventListener("click",clearAllFilters);
 }
-
 document.querySelector('.homestays_logo').addEventListener("click",function(){
     renderMain();
     removingNavHeroComponents();
     addEventsListeners();
 })
-
 let observer = new IntersectionObserver((entries,observer)=>{
     let entry=entries[0]
     if(!entry.isIntersecting){
