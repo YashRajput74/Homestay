@@ -55,8 +55,13 @@ body main .cityContainer{
     border-bottom: 1px solid lightgray;
 }
 .cityContainer .stayContainer .tilesDiv{
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
     height: 35vh;
     margin-top: 4vh;
+}
+.cityContainer .stayContainer .tilesDiv.visible{
+    opacity: 1;
 }
 .headingDiv{
     padding: 2vh;
@@ -165,6 +170,10 @@ body main .cityContainer{
     padding: 1vh;
     background-color: white;
 }
+.sortByList>li:hover{
+    cursor: pointer;
+    background-color: #F1EFEF;
+}
 .sortByList>li.selected{
     background-color: #92C01F;
     border: none;
@@ -229,6 +238,13 @@ body main .cityContainer{
 @media (max-width: 1024px){
     .hero.heightAuto{
         display: none;
+    }
+    .hero.heightAuto>h1{
+        display: none;
+    }
+    .filterByList{
+        right: 0;
+        top: 40vh;
     }
     .subHeader{
         display: flex;

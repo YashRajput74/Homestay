@@ -58,10 +58,83 @@ function addHeroComponents(){
     newButton3.classList.add("filter");
     heroFormSection.insertBefore(newButton3,searchButton.nextSibling);
 }
+function filterFunction(data){
+    let selectedFilters=document.querySelectorAll(".filterByList li.selected");
+    let filteredValues=Array.from(selectedFilters).map(li=>li.dataset.value);
+    filteredValues.forEach(filter=>{
+        data=data.filter(home=>{
+            if (filter === 'males' && home.males === 1) {
+                return true;
+            }
+            if (filter === 'females' && home.females === 1) {
+                return true;
+            }
+            if (filter === 'couples' && home.couples === 1) {
+                return true;
+            }
+            if (filter === 'families' && home.families === 1) {
+                return true;
+            }
+            if (filter === 'students' && home.students === 1) {
+                return true;
+            }
+            if (filter === 'pets' && home.pets === 0) {
+                return true;
+            }
+            if (filter === 'mealsProvided' && home.mealsProvided === 1) {
+                return true;
+            }
+            if (filter === 'useKitchen' && home.useKitchen === 1) {
+                return true;
+            }
+            if (filter === 'cooking' && home.cooking === 1) {
+                return true;
+            }
+            if (filter === 'golf' && home.golf === 1) {
+                return true;
+            }
+            if (filter === 'tennis' && home.tennis === 1) {
+                return true;
+            }
+            if (filter === 'hiking' && home.hiking === 1) {
+                return true;
+            }
+            if (filter === 'cycling' && home.cycling === 1) {
+                return true;
+            }
+            if (filter === 'wheelchair' && home.wheelchair === 1) {
+                return true;
+            }
+            if (filter === 'wirelessInternet' && home.wirelessIntenet === 1) {
+                return true;
+            }
+            if (filter === 'TV' && home.TV === 1) {
+                return true;
+            }
+            if (filter === 'garden' && home.garden === 1) {
+                return true;
+            }
+            if (filter === 'bikes' && home.bikes === 1) {
+                return true;
+            }
+            if (filter === 'parking' && home.parking === 1) {
+                return true;
+            }
+            if (filter === 'pool' && home.pool === 1) {
+                return true;
+            }
+            if (filter === 'gym' && home.gym === 1) {
+                return true;
+            }
+            return false;
+        });
+    });
+    return data;
+}
 function tilesRender(){
     let value=document.querySelector("#placeToGO").value;
     let sortedData=sortFunction();
-    let arrayOfHomes=sortedData;//in this function i will so filteriing
+    let arrayOfHomes=filterFunction(sortedData);
     var tpl= arrayOfHomes.map((item)=>{
         return `
         <div class="tilesDiv">
@@ -78,6 +151,12 @@ function tilesRender(){
         </div>`
     }).join('');
     document.querySelector(".headingDiv~div").innerHTML=tpl;
+    document.querySelectorAll(".tilesDiv").forEach(tile=>{
+        secondObserver.observe(tile);
+    });
+    document.querySelectorAll(".noOfHomes").forEach(item=>{
+        item.textContent=arrayOfHomes.length+" homestays";
+    });
 }
 function stayContainerRender(){
     let value=document.querySelector("#placeToGO").value;
@@ -86,15 +165,18 @@ function stayContainerRender(){
     <div class="headingDiv">
         <div class="subHeader">
             <div>List</div>
-            <div>Map</div>
+            <div>Filter</div>
         </div>
         <h1>Rooms to Rent and Homestays in ${data.cities[value].name}, India</h1>
-        <p>We have found ${numberOfHomes} homestays in ${data.cities[value].name}, India for your stay. Renting a room with Homestay in ${data.cities[value].name}, India offers host family accommodation, ideal for all types of travel including tourists, students, gap year, interns or city break weekenders.</p>
+        <p>We have found <span class="noOfHomes">${numberOfHomes} homestays</span> in ${data.cities[value].name}, India for your stay. Renting a room with Homestay in ${data.cities[value].name}, India offers host family accommodation, ideal for all types of travel including tourists, students, gap year, interns or city break weekenders.</p>
     </div>
     <div>
     </div>
     `;
     document.querySelector(".stayContainer").innerHTML=tpl;
+    document.querySelector(".subHeader>div:last-child").addEventListener("click",()=>{
+        document.querySelector(".hero.heightAuto").style.display="block";
+    });
     tilesRender();
 }
 function cityPageMain(){
@@ -132,52 +214,52 @@ function addFilterSortingUI(){
                     </ul>
                     <p>MEALS (0)</p>
                     <ul>
-                        <li>Meals Provided</li>
-                        <li>Use of Kitchen</li>
+                        <li data-value="mealsProvided">Meals Provided</li>
+                        <li data-value="useKitchen">Use of Kitchen</li>
                     </ul>
                 </div>
                 <div>
                     <p>HOST WELCOMES (0)</p>
                     <ul>
-                        <li>Males</li>
-                        <li>Females</li>
-                        <li>Couples</li>
-                        <li>Families</li>
-                        <li>Students</li>
+                        <li data-value="males">Males</li>
+                        <li data-value="females">Females</li>
+                        <li data-value="couples">Couples</li>
+                        <li data-value="families">Families</li>
+                        <li data-value="students">Students</li>
                     </ul>
                     <p>PETS (0)</p>
                     <ul>
-                        <li>No pets</li>
+                        <li data-value="pets">No pets</li>
                     </ul>
                 </div>
                 <div>
                     <p>HOBBIES (0)</p>
                     <ul>
-                        <li>Cooking</li>
-                        <li>Golf</li>
-                        <li>Tennis</li>
-                        <li>Hiking</li>
-                        <li>Cycling</li>
+                        <li data-value="cooking">Cooking</li>
+                        <li data-value="golf">Golf</li>
+                        <li data-value="tennis">Tennis</li>
+                        <li data-value="hiking">Hiking</li>
+                        <li data-value="cycling">Cycling</li>
                     </ul>
                     <p>ACCESSIBILITY (0)</p>
                     <ul>
-                        <li>Wheelchair Accessible</li>
+                        <li data-value="wheelchair">Wheelchair Accessible</li>
                     </ul>
                 </div>
                 <div>
                     <p>AMENITIES (0)</p>
                     <ul>
-                        <li>Wireless Internet</li>
-                        <li>TV</li>
-                        <li>Garden</li>
-                        <li>Bikes for use</li>
-                        <li>Parking</li>
-                        <li>Swimming Pool</li>
-                        <li>Gym at home</li>
+                        <li data-value="wirelessInternet">Wireless Internet</li>
+                        <li data-value="TV">TV</li>
+                        <li data-value="garden">Garden</li>
+                        <li data-value="bikes">Bikes for use</li>
+                        <li data-value="parking">Parking</li>
+                        <li data-value="pool">Swimming Pool</li>
+                        <li data-value="gym">Gym at home</li>
                     </ul>
                 </div>
                 <div>
-                    <span>15 Homestays</span>
+                    <span class="noOfHomes">15</span>
                     <span>-</span>
                     <span class="clearAllFilters">Clear filters</span>
                 </div>
@@ -221,8 +303,15 @@ function visibiltyOfLists(){
     });
 }
 function sorterButtons(event){
-    document.querySelectorAll(".sortByList>li").forEach((item)=>item.classList.remove("selected"));
+    let selectedLi=document.querySelectorAll(".sortByList>li");
+    if (selectedLi.length > 0 && selectedLi[0] === event.target) {
+        return; 
+    }
+    selectedLi.forEach((item)=>item.classList.remove("selected"));
     event.target.classList.add("selected");
+    if (document.querySelectorAll(".sortByList>li.selected").length === 0) {
+        document.querySelector(".sortByList li[data-value='normal']").classList.add("selected");
+    }
     tilesRender();
 }
 function sortFunction(){
@@ -232,6 +321,9 @@ function sortFunction(){
     let sortingList=document.querySelector(".sortByList");
     let selectedLi=sortingList.querySelector("li.selected");
     let sorter=selectedLi.dataset.value;
+    if (!selectedLi) {
+        return homesToSort;
+    }
     if (sorter === "reviews") {
         homesToSort.sort((a, b) => parseInt(b.reviews) - parseInt(a.reviews));
     } 
