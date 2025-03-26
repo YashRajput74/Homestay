@@ -156,10 +156,6 @@ function stayContainerRender(){
     let numberOfHomes=data.cityHomes[value].length;
     let tpl=`
     <div class="headingDiv">
-        <div class="subHeader">
-            <div>List</div>
-            <div></div>
-        </div>
         <h1>Rooms to Rent and Homestays in ${data.cities[value].name}, India</h1>
         <p>We have found <span class="noOfHomes">${numberOfHomes} homestays</span> in ${data.cities[value].name}, India for your stay. Renting a room with Homestay in ${data.cities[value].name}, India offers host family accommodation, ideal for all types of travel including tourists, students, gap year, interns or city break weekenders.</p>
     </div>
