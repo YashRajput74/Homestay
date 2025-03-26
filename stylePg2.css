@@ -207,9 +207,6 @@ body main .cityContainer{
     right: 13.8vw;
     column-gap: 2vw;
 }
-.filterByList>div{
-    border: 1px solid;
-}
 .filterByList>div>p{
     padding: 1vh;
     padding-bottom: 0vh;
