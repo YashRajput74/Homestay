@@ -14,22 +14,20 @@ function addingNavComponents() {
     let inspireMeLi = navList.querySelector("li:nth-child(2)");
     let mobileNav = document.querySelector(".mobileNav");
     let inspireMeAnchor = mobileNav.querySelector(".mobileNav > a:nth-child(2)");
-
-    if (!elementExists("nav ul li", "₹ INR")) {
-        inspireMeLi.textContent = "₹ INR";
-    }
-
     if (!elementExists("nav ul li", "CONTACT HOSTS")) {
         let newLi = document.createElement("li");
         newLi.textContent = "CONTACT HOSTS";
         navList.insertBefore(newLi, inspireMeLi);
+        newLi.addEventListener("click",()=>{
+            let div=document.querySelector(".specialDiv");
+            if(div.style.display=="block"){
+                div.style.display="none";
+            }
+            else{
+                div.style.display="block";
+            }
+        })
     }
-
-
-    if (!elementExists(".mobileNav a", "₹ INR")) {
-        inspireMeAnchor.textContent = "₹ INR";
-    }
-
     if (!elementExists(".mobileNav a", "CONTACT HOSTS")) {
         let newAnchor = document.createElement("a");
         newAnchor.textContent = "CONTACT HOSTS";
@@ -47,11 +45,6 @@ function addHeroComponents(){
     newButton.classList.add("bigButtons");
     newButton.classList.add("sort");
     heroFormSection.insertBefore(newButton,searchButton.nextSibling);
-    let newButton2=document.createElement("button");
-    newButton2.textContent="futureSlider";
-    newButton2.classList.add("bigButtons");
-    newButton2.classList.add("slider");
-    heroFormSection.insertBefore(newButton2,searchButton.nextSibling);
     let newButton3=document.createElement("button");
     newButton3.textContent="FILTERS";
     newButton3.classList.add("bigButtons");
@@ -165,7 +158,7 @@ function stayContainerRender(){
     <div class="headingDiv">
         <div class="subHeader">
             <div>List</div>
-            <div>Filter</div>
+            <div></div>
         </div>
         <h1>Rooms to Rent and Homestays in ${data.cities[value].name}, India</h1>
         <p>We have found <span class="noOfHomes">${numberOfHomes} homestays</span> in ${data.cities[value].name}, India for your stay. Renting a room with Homestay in ${data.cities[value].name}, India offers host family accommodation, ideal for all types of travel including tourists, students, gap year, interns or city break weekenders.</p>
@@ -174,9 +167,6 @@ function stayContainerRender(){
     </div>
     `;
     document.querySelector(".stayContainer").innerHTML=tpl;
-    document.querySelector(".subHeader>div:last-child").addEventListener("click",()=>{
-        document.querySelector(".hero.heightAuto").style.display="block";
-    });
     tilesRender();
 }
 function cityPageMain(){
@@ -285,6 +275,7 @@ function visibiltyOfLists(){
             list.style.display = "none";
         });
     });
+    
     document.addEventListener("click", (event) => {
         let sortByList = document.querySelector(".sortByList");
         let sortButton = document.querySelector(".sort");
@@ -304,9 +295,6 @@ function visibiltyOfLists(){
 }
 function sorterButtons(event){
     let selectedLi=document.querySelectorAll(".sortByList>li");
-    if (selectedLi.length > 0 && selectedLi[0] === event.target) {
-        return; 
-    }
     selectedLi.forEach((item)=>item.classList.remove("selected"));
     event.target.classList.add("selected");
     if (document.querySelectorAll(".sortByList>li.selected").length === 0) {

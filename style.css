@@ -65,7 +65,8 @@ nav>ul>li:hover{
 .subList>li{
     background-color: white;
     color: #512B1A;
-    padding: 1vh;
+    padding: 1.5vh;
+    border-radius: 3px;
 }
 .subList>li:hover{
     background-color: #f1efef;
@@ -122,12 +123,24 @@ nav>ul>li:hover{
     border-radius: 3px;
     border: none;
     padding-left: 1vh;
+    padding-right: 1vh;
 }
 .hero form>button{
     padding-left: 0vh;
 }
 .hero form>select:nth-child(1){
-    width: 40vh;
+    width: 40vh; 
+}
+.listFilterSort{
+    position: absolute;
+    top: 5vh;
+    display: none;
+    list-style: none;
+    background-color: white;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15), 0 -5px 5px rgba(0, 0, 0, 0.15);
+}
+.listFilterSort>li{
+    padding: 1vh 3vh;
 }
 .hero form>button{
     background-color: #CA005D;
@@ -195,8 +208,20 @@ main>div:nth-child(1)>h1{
     font-weight: 350;
     margin-bottom: 4vh;
 }
+.specialDiv{
+    display: none;
+    position: absolute;
+    top: 7vh;
+    font-size: 1rem;
+    padding: 1vh;
+    color: #512B1A;
+    border: 1px solid gray;
+    background-color: white;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);
+    right: 55vh;
+}
 main>div:nth-child(1)>p{
-    width: 80%;
+    width: 70%;
     padding-bottom: 6vh;
     font-size: 1.1rem;
     line-height: 3vh;
@@ -205,7 +230,7 @@ main>div:nth-child(1)>div{
     width: 85%;
     height: 50vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 iframe{
     width: 50%;
@@ -498,26 +523,6 @@ footer>div:nth-child(1)>ul>li:nth-child(1){
     color: lightgray;
     margin-bottom: 2vh;
 }
-.iconDiv{
-    width: 20%;
-    height: 20vh;
-}
-.iconDiv>div{
-    gap: 1vh;
-    display: flex;
-}
-.iconDiv>div>div{
-    min-width: 40px;
-    border: 1px solid white;
-    aspect-ratio: 1;
-    border-radius: 50%;
-}
-.iconDiv>div:nth-child(2)>div{
-    min-width: 200px;
-    height: 8vh;
-    margin-top: 2vh;
-    border-radius: 0%;
-}
 @media (max-width: 1024px){
     header>div>img{
         width: 50%;
@@ -701,6 +706,9 @@ footer>div:nth-child(1)>ul>li:nth-child(1){
     .reviewDiv>div:nth-child(2){
         font-size: 1rem;
         line-height: 3vh;
+    }
+    .hero{
+        height: 70vh;
     }
     .hero h1{
         width: 95%;

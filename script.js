@@ -20,17 +20,6 @@ function videoSection(){
                 referrerpolicy="strict-origin-when-cross-origin" 
                 allowfullscreen>
         </iframe>
-        <div>
-            <div></div>
-            <div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </div>
     </div>
     `;
     document.querySelector("main>div:nth-child(1)").innerHTML=tpl;
@@ -168,10 +157,8 @@ function toggleMobileNav() {
 }
 function removingNavHeroComponents(){
     let navList=document.querySelector("nav ul");
-    let inspireMeLi=navList.querySelector("li:nth-child(2)");
+    let inspireMeLi=navList.querySelector("li:nth-child(1)");
     inspireMeLi.textContent="Inspire Me";
-    let newLi = navList.querySelector("li:nth-child(3)");
-    navList.removeChild(newLi);
     let mobileNav = document.querySelector(".mobileNav");
     let inspireMeAnchor = document.querySelector(".mobileNav>a:nth-child(3)");
     let newAnchor = document.querySelector(".mobileNav>a:nth-child(2)");
@@ -192,6 +179,24 @@ function addEventsListeners(){
             scrollToSection(targetElement);
         });
     });
+    document.querySelectorAll('.mobileNav a').forEach(function(anchor) {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            let targetId = anchor.getAttribute('href').substring(1);
+            let targetElement = document.getElementById(targetId);
+            scrollToSection(targetElement);
+        });
+    });
+    document.querySelectorAll("nav ul li").forEach((item)=>{
+        item.addEventListener("click",(event)=>{
+            event.preventDefault();
+            let tragetID=item.dataset.value.substring(1);
+            let targetElement=document.querySelector(`#${tragetID}`);
+            if(targetElement){
+                scrollToSection(targetElement);
+            }
+        })
+    })
     document.querySelector("form").addEventListener("click",formRenderVisibility);
     document.querySelector(".sortByList").addEventListener("click",sorterButtons);
     document.querySelector(".filterByList").addEventListener("click",filterButtons);

@@ -14,8 +14,8 @@
         </div>
         <nav>
             <ul>
-                <li>DESTINATIONS</li>
-                <li>INSPIRE ME</li>
+                <li data-value="#child1">DESTINATIONS</li>
+                <li data-value="#child5">INSPIRE ME</li>
                 <li class="clickedLi">SIGN UP
                     <ul class="subList">
                         <li>Guest Signup</li>
@@ -28,7 +28,6 @@
                         <li>Host Login</li>
                     </ul>
                 </li>
-                <li>ENGLISH</li>
                 <li class="clickedLi">HELP
                     <ul class="subList">
                         <li>General</li>
@@ -42,7 +41,8 @@
                         <li>Contact Us</li>
                     </ul>
                 </li>
-                <li class="list_Room">LIST A ROOM</li>
+                <li data-value="#child3" class="list_Room">LIST A ROOM</li>
+                <div class="specialDiv">Contact the Developer: yashrajput7455@gmail.com</div>
             </ul>
         </nav>
         <div class="hamburger" onclick="toggleMobileNav()">
@@ -51,13 +51,12 @@
             <div></div>
         </div>
         <div class="mobileNav">
-            <a>DESTINATIONS</a>
-            <a>INSPIRE ME</a>
+            <a href="#child1">DESTINATIONS</a>
+            <a href="#child5">INSPIRE ME</a>
             <a>SIGN UP</a>
             <a>LOGIN</a>
-            <a>ENGLISH</a>
             <a>HELP</a>
-            <a><div>LIST A ROOM</div></a>
+            <a href="#child3"><div>LIST A ROOM</div></a>
           </div>
     </header>
     <section class="hero">
@@ -123,18 +122,6 @@
                 <li>CUSTOMER SERVICES</li>
                 <li>Need Help</li>
             </ul>
-            <div class="iconDiv">
-                <div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-                <div>
-                    <div></div>
-                </div>
-            </div>
         </div>
     </footer>
     <script src="data.js"></script>
