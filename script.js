@@ -201,6 +201,20 @@ function addEventsListeners(){
     document.querySelector(".sortByList").addEventListener("click",sorterButtons);
     document.querySelector(".filterByList").addEventListener("click",filterButtons);
     document.querySelector(".clearAllFilters").addEventListener("click",clearAllFilters);
+    document.querySelectorAll('.clickedA').forEach(anchor => {
+        anchor.addEventListener('click', function(event) {
+            event.preventDefault();
+            let subList = event.target.nextElementSibling;
+            if (subList && subList.classList.contains('subList2')) {
+                if (subList.style.display === "block") {
+                    subList.style.display = "none";
+                } else {
+                    subList.style.display = "block";
+                }
+            }
+        });
+    });
+
 }
 document.querySelector('.homestays_logo').addEventListener("click",function(){
     renderMain();

@@ -62,6 +62,9 @@ nav>ul>li:hover{
     width: max-content;
     list-style: none;
 }
+a.subList2{
+    display: block;
+}
 .subList>li{
     background-color: white;
     color: #512B1A;
@@ -89,6 +92,11 @@ nav>ul>li:hover{
     padding: 1.5vh 2vh;
 }
 .mobileNav{
+    display: none;
+    margin-bottom: 2vh;
+    height: auto;
+}
+.subList2{
     display: none;
 }
 .hero{
@@ -561,8 +569,7 @@ footer>div:nth-child(1)>ul>li:nth-child(1){
         transition: max-height 0.3s ease-in-out;
     }
     .mobileNav.open {
-        padding-top: 2vh;
-        max-height: 350px;
+        max-height: 600px;
     }
     .mobileNav>a{
         height: 4vh;

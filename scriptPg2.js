@@ -252,6 +252,9 @@ function addFilterSortingUI(){
             </div>`
     document.querySelector(".hero").innerHTML+=tpl;
 }
+function clickEvent(event){
+    console.log(event.target);
+}
 function visibiltyOfLists(){
     document.querySelectorAll('nav li').forEach(function (item) {
         item.addEventListener("click", function (event) {
@@ -275,6 +278,7 @@ function visibiltyOfLists(){
     document.addEventListener("click", (event) => {
         let sortByList = document.querySelector(".sortByList");
         let sortButton = document.querySelector(".sort");
+        if (!sortButton || !sortByList) return;
         if (!sortButton.contains(event.target) && !sortByList.contains(event.target)) {
             sortByList.style.display = "none";
             sortButton.style.backgroundColor = "";
@@ -283,6 +287,7 @@ function visibiltyOfLists(){
     document.addEventListener("click", (event) => {
         let filterByList = document.querySelector(".filterByList");
         let filterButton = document.querySelector(".filter");
+        if (!filterButton || !filterByList) return;
         if (!filterButton.contains(event.target) && !filterByList.contains(event.target)) {
             filterByList.style.display = "none";
             filterButton.style.backgroundColor = "";
