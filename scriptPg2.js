@@ -252,9 +252,6 @@ function addFilterSortingUI(){
             </div>`
     document.querySelector(".hero").innerHTML+=tpl;
 }
-function clickEvent(event){
-    console.log(event.target);
-}
 function visibiltyOfLists(){
     document.querySelectorAll('nav li').forEach(function (item) {
         item.addEventListener("click", function (event) {
