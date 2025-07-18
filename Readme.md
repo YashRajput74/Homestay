@@ -49,7 +49,6 @@ Second page includes:
 ## 🚀 Installation
 
 1. Clone the repository:
-   ```bash
    git clone https://github.com/YashRajput74/Homestay.git
 
 2. Navigate to the project directory:
@@ -57,11 +56,13 @@ Second page includes:
 
 3. Open index.html in your browser to explore the app locally.
 
-📸 Live Demo: https://680952646261ee0008c7f09e--pgfinderhomestay.netlify.app/
 
-🧠 Future Improvements
+## 📸 Live Demo: 
+🔗 [Live Site](https://6879e533ee3b050008dd7753--pgfinderhomestay.netlify.app/)
+
+## 🧠 Future Improvements
 - Add backend/database support for real listings
 - Integrate maps and user accounts
 
-🙌 Acknowledgments
+## 🙌 Acknowledgments
 Built with passion as a fully functional, responsive, and beautiful frontend project — made entirely using vanilla HTML, CSS, and JS.
