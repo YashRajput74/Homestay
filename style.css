@@ -103,7 +103,7 @@ a.subList2{
     width: 100%;
     height: 85vh;
     border: var(--primary-border);
-    background-image: url(https://www.homestay.com/assets/homepage/hero/hero-d964776e555246a8c442f3cbca48c7412b066dee0fdf7cd76e162d9f6d40700f.jpg);
+    background-image: url(./assets/asset_bg_hero.png);
     background-size: cover;
     background-position: 50% 10%;
     display: flex;

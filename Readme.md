@@ -58,7 +58,7 @@ Second page includes:
 
 
 ## 📸 Live Demo: 
-🔗 [Live Site](https://6879e533ee3b050008dd7753--pgfinderhomestay.netlify.app/)
+🔗 [Live Site](https://pgfinderhomestay.netlify.app/)
 
 ## 🧠 Future Improvements
 - Add backend/database support for real listings
